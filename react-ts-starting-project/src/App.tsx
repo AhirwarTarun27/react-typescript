@@ -15,10 +15,16 @@ function App() {
     });
   };
 
+  const deleteItemHandler = (deletedId: string) => {
+    setTodos((prevTodo) => {
+      return prevTodo.filter((item: Todo) => item.id !== deletedId);
+    });
+  };
+
   return (
     <div>
       <TodoForm onAddText={addTodoHandler} />
-      <Todos items={todos} />
+      <Todos items={todos} itemRemoveHandler={deleteItemHandler} />
     </div>
   );
 }
